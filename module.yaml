@@ -1,0 +1,17 @@
+notests *default:
+  build:
+    target: Vostok.ClusterClient.Singular.sln
+    configuration: NoTests
+    tool:
+      name: dotnet
+
+  install:
+    - Vostok.ClusterClient.Singular/bin/Release/netstandard2.0/Vostok.ClusterClient.Singular.dll
+
+  deps:
+    - vostok.devtools
+
+full-build > notests:
+  build:
+    target: Vostok.ClusterClient.Singular.sln
+    configuration: Release
