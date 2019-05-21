@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  
   <Import Project="..\..\vostok.devtools\library-common-props\Main-Project.props" />
   <Import Project="..\..\vostok.devtools\git-commit-to-assembly-title\Vostok.Tools.GitCommit2AssemblyTitle.props" />
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Debug;Release</Configurations>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-
   <PropertyGroup>
     <VersionPrefix>0.0.1</VersionPrefix>
   </PropertyGroup>
-
   <PropertyGroup>
     <Title>Vostok.ClusterClient.Singular</Title>
     <Description>This module allows to set up ClusterClient to send requests via Singular API gateway.</Description>
     <RootNamespace>Vostok.Clusterclient.Singular</RootNamespace>
   </PropertyGroup>
-
   <PropertyGroup>
     <PackageProjectUrl>https://github.com/vostok/clusterclient.singular</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vostok/clusterclient.singular/blob/master/LICENSE</PackageLicenseUrl>
@@ -27,5 +22,22 @@
     <PackageReleaseNotes>https://github.com/vostok/clusterclient.singular/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
-  
+  <ItemGroup>
+    <Reference Include="Vostok.ClusterClient.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ClusterClient.Topology.CC">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterclient.topology.cc\Vostok.ClusterClient.Topology.CC\bin\Release\netstandard2.0\Vostok.ClusterClient.Topology.CC.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ClusterConfig.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterconfig.client\Vostok.ClusterConfig.Client\bin\Release\netstandard2.0\Vostok.ClusterConfig.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ClusterConfig.Client.Abstractions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterconfig.client.abstractions\Vostok.ClusterConfig.Client.Abstractions\bin\Release\netstandard2.0\Vostok.ClusterConfig.Client.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
