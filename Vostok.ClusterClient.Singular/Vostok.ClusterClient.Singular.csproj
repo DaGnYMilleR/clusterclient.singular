@@ -17,6 +17,7 @@
   <PropertyGroup>
     <Title>Vostok.ClusterClient.Singular</Title>
     <Description>This module allows to set up ClusterClient to send requests via Singular API gateway.</Description>
+    <RootNamespace>Vostok.Clusterclient.Singular</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
