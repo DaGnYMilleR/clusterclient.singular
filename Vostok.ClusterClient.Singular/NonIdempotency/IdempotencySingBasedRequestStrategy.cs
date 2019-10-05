@@ -5,24 +5,20 @@ using System.Threading.Tasks;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Core.Sending;
 using Vostok.Clusterclient.Core.Strategies;
-using Vostok.Clusterclient.Core.Strategies.DelayProviders;
-using Vostok.ClusterConfig.Client.Abstractions;
 
 namespace Vostok.Clusterclient.Singular.NonIdempotency
 {
-    public class IdempotencySingBasedRequestStrategy : IRequestStrategy
+    internal class IdempotencySingBasedRequestStrategy : IRequestStrategy
     {
-        private const int ForkingStrategyParallelismLevel = 3;
-        private readonly IRequestStrategy sequentialStrategy;
+        private readonly IRequestStrategy sequential1Strategy;
         private readonly IRequestStrategy forkingStrategy;
         private IIdempotencyIdentifier idempotencyIdentifier;
 
-        public IdempotencySingBasedRequestStrategy(IClusterConfigClient clusterConfigClient, string service)
+        public IdempotencySingBasedRequestStrategy(IIdempotencyIdentifier idempotencyIdentifier, IRequestStrategy sequential1Strategy, IRequestStrategy forkingStrategy)
         {
-            sequentialStrategy = Strategy.Sequential1;
-            forkingStrategy = new ForkingRequestStrategy(new EqualDelaysProvider(ForkingStrategyParallelismLevel), ForkingStrategyParallelismLevel);
-            var idempotencyIdentifiersCache = new IdempotencyIdentifiersCache(clusterConfigClient, service);
-            idempotencyIdentifier = new IdempotencyIdentifier(idempotencyIdentifiersCache);
+            this.sequential1Strategy = sequential1Strategy;
+            this.forkingStrategy = forkingStrategy;
+            this.idempotencyIdentifier = idempotencyIdentifier;
         }
 
         public Task SendAsync(
@@ -34,7 +30,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
             int replicasCount, 
             CancellationToken cancellationToken)
         {
-            var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, request.Url.AbsolutePath) ? forkingStrategy : sequentialStrategy;
+            var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, request.Url.AbsolutePath) ? forkingStrategy : sequential1Strategy;
 
             return selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken);
         }

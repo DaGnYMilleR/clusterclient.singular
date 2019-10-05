@@ -24,6 +24,8 @@ namespace Vostok.Clusterclient.Singular
 
         internal const string ServicesConfigurationNamePrefix = "singular/services/";
 
+        internal const int ForkingStrategyParallelismLevel = 3;
+
         internal static string GetNonIdempotencySigns(string service)
         {
             return $"{ServicesConfigurationNamePrefix}{service}/NonIdempotencySigns";

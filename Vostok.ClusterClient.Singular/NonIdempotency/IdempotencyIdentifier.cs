@@ -20,7 +20,10 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
                 if (sign.Method == null || sign.PathPattern == null)
                     continue;
 
-                if (string.Equals(sign.Method, method, StringComparison.OrdinalIgnoreCase) && path != null && sign.PathPattern.IsMatch(path))
+                if (!string.Equals(sign.Method, method, StringComparison.OrdinalIgnoreCase) || path == null)
+                    continue;
+                
+                if (sign.PathPattern.IsMatch(path))
                     return false;
             }
 

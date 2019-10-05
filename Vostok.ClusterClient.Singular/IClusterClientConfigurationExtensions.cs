@@ -3,6 +3,8 @@ using JetBrains.Annotations;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
 using Vostok.Clusterclient.Core.Ordering.Weighed.Adaptive;
+using Vostok.Clusterclient.Core.Strategies;
+using Vostok.Clusterclient.Core.Strategies.DelayProviders;
 using Vostok.Clusterclient.Core.Transforms;
 using Vostok.Clusterclient.Singular.NonIdempotency;
 using Vostok.Clusterclient.Topology.CC;
@@ -53,7 +55,11 @@ namespace Vostok.Clusterclient.Singular
             }
             else
             {
-                self.DefaultRequestStrategy = new IdempotencySingBasedRequestStrategy(clusterConfigClient, settings.TargetService);
+                var sequential1Strategy = Strategy.Sequential1;
+                var forkingStrategy = new ForkingRequestStrategy(new EqualDelaysProvider(SingularConstants.ForkingStrategyParallelismLevel), SingularConstants.ForkingStrategyParallelismLevel);
+                var idempotencyIdentifiersCache = new IdempotencyIdentifiersCache(clusterConfigClient, settings.TargetService);
+                var idempotencyIdentifier = new IdempotencyIdentifier(idempotencyIdentifiersCache);
+                self.DefaultRequestStrategy = new IdempotencySingBasedRequestStrategy(idempotencyIdentifier, sequential1Strategy, forkingStrategy);
             }
 
             self.MaxReplicasUsedPerRequest = 3;
