@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
 using Vostok.ClusterConfig.Client.Abstractions;
 
@@ -46,5 +47,11 @@ namespace Vostok.Clusterclient.Singular
         /// </summary>
         [CanBeNull]
         public IClusterProvider AlternativeClusterProvider { get; set; }
+
+        /// <summary>
+        /// Explicitly setting a custom <see cref="IRequestStrategy"/> prevents the client from using IdempotencySign-based strategy/>.
+        /// </summary>
+        [CanBeNull]
+        public IRequestStrategy AlternativeDefaultRequestStrategy { get; set; }
     }
 }

@@ -21,5 +21,12 @@ namespace Vostok.Clusterclient.Singular
         public const string ClusterConfigTopologyPath = "topology/singular";
 
         internal const string SingularServiceName = "Singular";
+
+        internal const string ServicesConfigurationNamePrefix = "singular/services/";
+
+        internal static string GetNonIdempotencySigns(string service)
+        {
+            return $"{ServicesConfigurationNamePrefix}{service}/NonIdempotencySigns";
+        }
     }
 }

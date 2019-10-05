@@ -23,6 +23,10 @@
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\vostok.commons.collections\Vostok.Commons.Collections\ByReferenceEqualityComparer.cs" Link="Commons\ByReferenceEqualityComparer.cs" />
+    <Compile Include="..\..\vostok.commons.collections\Vostok.Commons.Collections\CachingTransform.cs" Link="Commons\CachingTransform.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>
@@ -38,6 +42,26 @@
     <Reference Include="Vostok.ClusterConfig.Client.Abstractions">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterconfig.client.abstractions\Vostok.ClusterConfig.Client.Abstractions\bin\Release\netstandard2.0\Vostok.ClusterConfig.Client.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Configuration.Abstractions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.configuration.abstractions\Vostok.Configuration.Abstractions\bin\Release\netstandard2.0\Vostok.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Commons.Collections">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.commons.collections\Vostok.Commons.Collections\bin\Release\netstandard2.0\Vostok.Commons.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Configuration">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.configuration\Vostok.Configuration\bin\Release\netstandard2.0\Vostok.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Configuration.Sources.ClusterConfig">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.configuration.sources.cc\Vostok.Configuration.Sources.ClusterConfig\bin\Release\netstandard2.0\Vostok.Configuration.Sources.ClusterConfig.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Configuration.Sources.ClusterConfig.Legacy">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.configuration.sources.cc.legacy\Vostok.Configuration.Sources.ClusterConfig.Legacy\bin\Release\netstandard2.0\Vostok.Configuration.Sources.ClusterConfig.Legacy.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
