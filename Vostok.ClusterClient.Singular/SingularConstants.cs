@@ -28,7 +28,7 @@ namespace Vostok.Clusterclient.Singular
 
         internal static string GetNonIdempotencySigns(string service)
         {
-            return $"{ServicesConfigurationNamePrefix}{service}/NonIdempotencySigns";
+            return $"{ServicesConfigurationNamePrefix}{service}";
         }
     }
 }

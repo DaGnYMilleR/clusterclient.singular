@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Commons.Collections;
 using Vostok.Configuration;
+using Vostok.Configuration.Extensions;
 using Vostok.Configuration.Sources.ClusterConfig;
 using Vostok.Configuration.Sources.ClusterConfig.Converters;
 using Vostok.Configuration.Sources.ClusterConfig.Legacy;
@@ -12,22 +14,22 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
     {
         private readonly List<ISettingsNodeConverter> customConverters = new List<ISettingsNodeConverter>
         {
-            new LegacyCollectionConverter(typeof (NonIdempotencySignSettings).Name, "Signs")
+            new LegacyCollectionConverter(typeof (NonIdempotencySignSettings).Name, "Signs", "NonIdempotencySigns")
         };
         private readonly CachingTransform<NonIdempotencySignsSettings, NonIdempotencySign[]> cache;
 
         public IdempotencyIdentifiersCache(IClusterConfigClient clusterConfigClient, string service)
         {
             var configurationProvider = new ConfigurationProvider(new ConfigurationProviderSettings());
-            var sourceSettings = new ClusterConfigSourceSettings(clusterConfigClient, SingularConstants.GetNonIdempotencySigns(service)) {CustomConverters = customConverters};
-            var source = new ClusterConfigSource(sourceSettings);
+            var prefix = SingularConstants.GetNonIdempotencySigns(service);
+            var sourceSettings = new ClusterConfigSourceSettings(clusterConfigClient, prefix) {CustomConverters = customConverters};
+            var source = new ClusterConfigSource(sourceSettings).ScopeTo("NonIdempotencySigns");
+
             configurationProvider.SetupSourceFor<NonIdempotencySignsSettings>(source);
 
             cache = new CachingTransform<NonIdempotencySignsSettings, NonIdempotencySign[]>(
                 PreprocessSigns,
                 configurationProvider.Get<NonIdempotencySignsSettings>);
-
-            configurationProvider.Get<List<NonIdempotencySignSettings>>();
         }
 
         public NonIdempotencySign[] GetNonIdempotencySigns()
