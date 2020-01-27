@@ -49,7 +49,8 @@ namespace Vostok.Clusterclient.Singular
 
             self.MaxReplicasUsedPerRequest = 3;
 
-            self.TargetServiceName = SingularConstants.SingularServiceName;
+            self.TargetServiceName = $"{settings.TargetService} via {SingularConstants.SingularServiceName}";
+            self.TargetEnvironment = settings.TargetEnvironment;
         }
     }
 }
