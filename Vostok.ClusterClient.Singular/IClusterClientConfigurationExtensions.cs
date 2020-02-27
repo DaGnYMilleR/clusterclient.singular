@@ -2,11 +2,12 @@
 using JetBrains.Annotations;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
-using Vostok.Clusterclient.Core.Ordering.Weighed.Adaptive;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Transforms;
+using Vostok.ClusterClient.Datacenters;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
+using Vostok.Datacenters;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -42,7 +43,9 @@ namespace Vostok.Clusterclient.Singular
             self.SetupWeighedReplicaOrdering(
                 builder =>
                 {
-                    builder.AddAdaptiveHealthModifierWithLinearDecay(TuningPolicies.ByResponseVerdict, TimeSpan.FromMinutes(5));
+                    builder.AddAdaptiveHealthModifierWithLinearDecay(TimeSpan.FromMinutes(5));
+                    builder.SetupAvoidInactiveDatacentersWeightModifier(DatacentersProvider.Get());
+                    builder.SetupBoostLocalDatacentersWeightModifier(DatacentersProvider.Get());
                 });
 
             self.DefaultRequestStrategy = Strategy.Sequential1;
