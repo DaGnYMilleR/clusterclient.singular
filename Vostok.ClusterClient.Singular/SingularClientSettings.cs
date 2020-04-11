@@ -53,5 +53,10 @@ namespace Vostok.Clusterclient.Singular
         /// </summary>
         [CanBeNull]
         public IRequestStrategy AlternativeDefaultRequestStrategy { get; set; }
+
+        /// <summary>
+        /// Disable usage of idempotency settings configured in ClusterConfig for specific services.
+        /// </summary>
+        public bool DisableStrategyBasedOnBackendSettings { get; set; }
     }
 }

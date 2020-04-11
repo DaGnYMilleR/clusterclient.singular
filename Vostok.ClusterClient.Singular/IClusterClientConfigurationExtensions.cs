@@ -53,6 +53,10 @@ namespace Vostok.Clusterclient.Singular
             {
                 self.DefaultRequestStrategy = settings.AlternativeDefaultRequestStrategy;
             }
+            else if (settings.DisableStrategyBasedOnBackendSettings || settings.AlternativeClusterProvider != null)
+            {
+                self.DefaultRequestStrategy = Strategy.Sequential1;
+            }
             else
             {
                 var sequential1Strategy = Strategy.Sequential1;
