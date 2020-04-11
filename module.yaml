@@ -13,7 +13,6 @@ notests *default:
     - vostok.configuration.sources
     - vostok.configuration.logging
     - vostok.logging.abstractions
-    - vostok.configuration.sources.cc.legacy
     - vostok.configuration.sources.cc
     - vostok.configuration.abstractions
     - vostok.configuration
