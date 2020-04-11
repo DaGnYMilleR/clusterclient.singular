@@ -4,6 +4,8 @@ using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using Vostok.Clusterclient.Singular.NonIdempotency;
+using Vostok.Clusterclient.Singular.NonIdempotency.Identifier;
+using Vostok.Clusterclient.Singular.NonIdempotency.Settings;
 
 namespace Vostok.Clusterclient.Singular.Tests.Idempotency
 {
@@ -17,13 +19,14 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         private string foo = new Uri("http://localhost:80/foo").AbsolutePath;
         private string foobar = new Uri("http://localhost:80/foo/bar").AbsolutePath;
 
-        private IIdempotencyIdentifiersCache cache;
+        private IIdempotencySignsProvider provider;
         private IdempotencyIdentifier identifier;
 
         [SetUp]
         public void SetUp()
         {
-            cache = Substitute.For<IIdempotencyIdentifiersCache>();
+            provider = Substitute.For<IIdempotencySignsProvider>();
+            var cache = new IdempotencySignsCache(provider);
             identifier = new IdempotencyIdentifier(cache);
         }
 
@@ -79,7 +82,7 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         [Test]
         public void Should_detect_not_idempotent_methods_with_given_path_pattern_with_and_without_path_delimiter()
         {
-            MockCache(new NonIdempotencySignSettings{Method = POST, PathPattern = "/foo/*"}, new NonIdempotencySignSettings{Method = POST, PathPattern = "/foo"});
+            MockCache(new NonIdempotencySignSettings {Method = POST, PathPattern = "/foo/*"}, new NonIdempotencySignSettings {Method = POST, PathPattern = "/foo"});
 
             identifier.IsIdempotent(POST, empty).Should().BeTrue();
             identifier.IsIdempotent(POST, "/foo1").Should().BeTrue();
@@ -130,7 +133,7 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
 
         private void MockCache(params NonIdempotencySignSettings[] signs)
         {
-            cache.GetNonIdempotencySigns().Returns(signs.Select(x => new NonIdempotencySign {Method = x.Method, PathPattern = new Wildcard(x.PathPattern)}).ToArray());
+          provider.Get().Returns(new NonIdempotencySignsSettings() {Signs = signs.ToList()});
         }
     }
 }
