@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Vostok.Clusterclient.Singular.NonIdempotency
+namespace Vostok.Clusterclient.Singular.NonIdempotency.Identifier
 {
     internal class Wildcard : Regex
     {

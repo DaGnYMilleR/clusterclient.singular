@@ -1,4 +1,4 @@
-﻿namespace Vostok.Clusterclient.Singular.NonIdempotency
+﻿namespace Vostok.Clusterclient.Singular.NonIdempotency.Settings
 {
     public class NonIdempotencySignSettings
     {

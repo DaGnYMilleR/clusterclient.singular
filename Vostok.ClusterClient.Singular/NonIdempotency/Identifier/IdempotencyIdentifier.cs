@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace Vostok.Clusterclient.Singular.NonIdempotency
+namespace Vostok.Clusterclient.Singular.NonIdempotency.Identifier
 {
     internal class IdempotencyIdentifier : IIdempotencyIdentifier
     {
-        private readonly IIdempotencyIdentifiersCache idempotencyIdentifiersCache;
+        private readonly IIdempotencySignsCache idempotencySignsCache;
 
-        public IdempotencyIdentifier(IIdempotencyIdentifiersCache idempotencyIdentifiersCache)
+        public IdempotencyIdentifier(IIdempotencySignsCache idempotencySignsCache)
         {
-            this.idempotencyIdentifiersCache = idempotencyIdentifiersCache;
+            this.idempotencySignsCache = idempotencySignsCache;
         }
 
         public bool IsIdempotent(string method, string path)
         {
-            var signs = idempotencyIdentifiersCache.GetNonIdempotencySigns();
+            var signs = idempotencySignsCache.Get();
 
             foreach (var sign in signs)
             {

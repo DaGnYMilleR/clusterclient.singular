@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Vostok.Clusterclient.Singular.NonIdempotency
+namespace Vostok.Clusterclient.Singular.NonIdempotency.Settings
 {
     public class NonIdempotencySignsSettings
     {
