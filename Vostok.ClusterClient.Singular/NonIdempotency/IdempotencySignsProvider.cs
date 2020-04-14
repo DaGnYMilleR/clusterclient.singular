@@ -29,7 +29,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
             if (ClusterConfigClient.Default.Get(servicePath) == null)
                 return EmptySigns;
 
-            return ConfigurationProvider.Default.Get<NonIdempotencySignsSettings>(source);
+            return ConfigurationProvider.Default.Get<NonIdempotencyServiceSettings>(source).NonIdempotencySigns;
         }
     }
 }

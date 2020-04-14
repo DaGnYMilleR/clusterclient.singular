@@ -31,7 +31,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
             int replicasCount, 
             CancellationToken cancellationToken)
         {
-            var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, request.Url.AbsolutePath) ? forkingStrategy : sequential1Strategy;
+            var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, request.Url.OriginalString) ? forkingStrategy : sequential1Strategy;
 
             return selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken);
         }
