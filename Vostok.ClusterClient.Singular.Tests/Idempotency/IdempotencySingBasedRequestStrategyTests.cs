@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using NSubstitute;
 using NUnit.Framework;
 using Vostok.Clusterclient.Core.Model;
@@ -27,24 +28,25 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
             request = Request.Get("http://localhost:80/foo/bar");
         }
 
-        [Test]
-        public void Should_correct_extract_relative_path_from_urls()
+        [TestCase("http://localhost:80/foo/bar", "/foo/bar")]
+        [TestCase("http://localhost:80/foo/bar?orgId=1&userId=qwerty", "/foo/bar")]
+        [TestCase("http://localhost:80", "/")]
+        [TestCase("http://localhost:80/", "/")]
+        public void Should_correct_extract_relative_path_from_absolute_urls(string url, string expectedPath)
         {
-            request = Request.Get("http://localhost:80/foo/bar");
+            request = Request.Get(url);
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, "/foo/bar");
+            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, expectedPath);
+        }
 
-            request = Request.Post("http://localhost:80/foo/bar?orgId=1&userId=qwerty");
+        [TestCase("/foo/bar", "/foo/bar")]
+        [TestCase("/foo/bar?orgId=1&userId=qwerty", "/foo/bar?orgId=1&userId=qwerty")]
+        [TestCase("/", "/")]
+        public void Should_correct_extract_relative_path_from_relative_urls(string url, string expectedPath)
+        {
+            request = Request.Get(new Uri(url, UriKind.Relative));
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, "/foo/bar");
-            
-            request = Request.Get("http://localhost:80");
-            strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, "/");
-
-            request = Request.Patch("http://localhost:80/");
-            strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, "/");
+            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, expectedPath);
         }
 
         [Test]

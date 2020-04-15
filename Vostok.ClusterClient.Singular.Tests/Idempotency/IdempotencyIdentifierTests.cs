@@ -15,9 +15,9 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         private const string POST = "POST";
         private const string GET = "GET";
         private const string PATCH = "PATCH";
-        private string empty = new Uri("http://localhost:80").AbsolutePath;
-        private string foo = new Uri("http://localhost:80/foo").AbsolutePath;
-        private string foobar = new Uri("http://localhost:80/foo/bar").AbsolutePath;
+        private string empty = new Uri("/", UriKind.Relative).OriginalString;
+        private string foo = new Uri("/foo", UriKind.Relative).OriginalString;
+        private string foobar = new Uri("/foo/bar", UriKind.Relative).OriginalString;
 
         private IIdempotencySignsProvider provider;
         private IdempotencyIdentifier identifier;
