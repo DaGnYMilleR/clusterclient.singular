@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
 using Vostok.ClusterConfig.Client.Abstractions;
+using Vostok.Singular.Core;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -33,7 +34,7 @@ namespace Vostok.Clusterclient.Singular
         /// Path to ClusterConfig-based topology containing addresses of Singular replicas.
         /// </summary>
         [CanBeNull]
-        public string ClusterConfigTopologyPath { get; set; } = SingularConstants.ClusterConfigTopologyPath;
+        public string ClusterConfigTopologyPath { get; set; } = SingularConstants.CCTopologyName;
 
         /// <summary>
         /// <para>Use this property to provide a custom instance of ClusterConfig client to fetch topology specified by <see cref="ClusterConfigTopologyPath"/>.</para>

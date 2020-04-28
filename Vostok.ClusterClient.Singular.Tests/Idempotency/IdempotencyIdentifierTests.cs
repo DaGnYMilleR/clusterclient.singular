@@ -3,9 +3,9 @@ using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
-using Vostok.Clusterclient.Singular.NonIdempotency;
-using Vostok.Clusterclient.Singular.NonIdempotency.Identifier;
-using Vostok.Clusterclient.Singular.NonIdempotency.Settings;
+using Vostok.Singular.Core;
+using Vostok.Singular.Core.Identifier;
+using Vostok.Singular.Core.Settings;
 
 namespace Vostok.Clusterclient.Singular.Tests.Idempotency
 {

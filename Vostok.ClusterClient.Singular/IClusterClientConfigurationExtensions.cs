@@ -9,6 +9,7 @@ using Vostok.Clusterclient.Core.Transforms;
 using Vostok.Clusterclient.Singular.NonIdempotency;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
+using Vostok.Singular.Core;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -40,8 +41,8 @@ namespace Vostok.Clusterclient.Singular
             self.RequestTransforms.Add(
                 new AdHocRequestTransform(
                     request => request
-                        .WithHeader(SingularConstants.EnvironmentHeader, settings.TargetEnvironment)
-                        .WithHeader(SingularConstants.ServiceHeader, settings.TargetService)));
+                        .WithHeader(SingularHeaders.Environment, settings.TargetEnvironment)
+                        .WithHeader(SingularHeaders.Service, settings.TargetService)));
 
             self.SetupWeighedReplicaOrdering(
                 builder =>
@@ -60,14 +61,14 @@ namespace Vostok.Clusterclient.Singular
             else
             {
                 var sequential1Strategy = Strategy.Sequential1;
-                var forkingStrategy = new ForkingRequestStrategy(new EqualDelaysProvider(SingularConstants.ForkingStrategyParallelismLevel), SingularConstants.ForkingStrategyParallelismLevel);
+                var forkingStrategy = new ForkingRequestStrategy(new EqualDelaysProvider(SingularClientConstants.ForkingStrategyParallelismLevel), SingularClientConstants.ForkingStrategyParallelismLevel);
                 var idempotencyIdentifier = IdempotencyIdentifierCache.Get(settings.TargetService);
                 self.DefaultRequestStrategy = new IdempotencySingBasedRequestStrategy(idempotencyIdentifier, sequential1Strategy, forkingStrategy);
             }
 
             self.MaxReplicasUsedPerRequest = 3;
 
-            self.TargetServiceName = SingularConstants.SingularServiceName;
+            self.TargetServiceName = SingularConstants.ServiceName;
         }
     }
 }
