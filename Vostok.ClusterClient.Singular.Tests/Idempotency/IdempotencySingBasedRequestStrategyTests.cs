@@ -2,10 +2,14 @@
 using System.Threading;
 using NSubstitute;
 using NUnit.Framework;
+using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Singular.NonIdempotency;
-using Vostok.Singular.Core.Identifier;
+using Vostok.Clusterclient.Transport;
+using Vostok.Logging.Console;
+using Vostok.Singular.Core.Idempotency.Identifier;
+
 
 namespace Vostok.Clusterclient.Singular.Tests.Idempotency
 {
