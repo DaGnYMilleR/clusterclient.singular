@@ -2,6 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\vostok.devtools\library-common-props\Main-Project.props" />
   <Import Project="..\..\vostok.devtools\git-commit-to-assembly-title\Vostok.Tools.GitCommit2AssemblyTitle.props" />
+  <Import Project="..\..\vostok.singular.core\SingularCoreInternal.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Debug;Release</Configurations>
@@ -23,23 +24,7 @@
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\vostok.commons.collections\Vostok.Commons.Collections\ByReferenceEqualityComparer.cs" Link="Commons\ByReferenceEqualityComparer.cs" />
-    <Compile Include="..\..\vostok.commons.collections\Vostok.Commons.Collections\CachingTransform.cs" Link="Commons\CachingTransform.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\SingularHeaders.cs" Link="SingularCommons\SingularHeaders.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Settings\NonIdempotencySignsSettings.cs" Link="SingularCommons\NonIdempotencySignsSettings.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Settings\NonIdempotencySignSettings.cs" Link="SingularCommons\NonIdempotencySignSettings.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\SingularConstants.cs" Link="SingularCommons\SingularConstants.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\SingularClientConstants.cs" Link="SingularCommons\SingularClientConstants.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\IIdempotencySignsProvider.cs" Link="SingularCommons\IIdempotencySignsProvider.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\IdempotencyIdentifierCache.cs" Link="SingularCommons\IdempotencyIdentifierCache.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Settings\NonIdempotencyServiceSettings.cs" Link="SingularCommons\NonIdempotencyServiceSettings.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Identifier\IIdempotencyIdentifier.cs" Link="SingularCommons\IIdempotencyIdentifier.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Identifier\IdempotencyIdentifier.cs" Link="SingularCommons\IdempotencyIdentifier.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Identifier\NonIdempotencySign.cs" Link="SingularCommons\NonIdempotencySign.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\IIdempotencySignsCache.cs" Link="SingularCommons\IIdempotencySignsCache.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\IdempotencySignsCache.cs" Link="SingularCommons\IdempotencySignsCache.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\Identifier\Wildcard.cs" Link="SingularCommons\Wildcard.cs" />
-	<Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\Idempotency\IdempotencySignsProvider.cs" Link="SingularCommons\IdempotencySignsProvider.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">

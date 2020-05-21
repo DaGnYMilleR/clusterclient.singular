@@ -10,7 +10,7 @@ using Vostok.Clusterclient.Singular.NonIdempotency;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
 using Vostok.Singular.Core;
-using Vostok.Singular.Core.Idempotency;
+using Vostok.Singular.Core.Idempotency.BlackList.Settings;
 
 namespace Vostok.Clusterclient.Singular
 {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Core.Sending;
 using Vostok.Clusterclient.Core.Strategies;
-using Vostok.Singular.Core.Idempotency.Identifier;
+using Vostok.Singular.Core.Idempotency;
 
 namespace Vostok.Clusterclient.Singular.NonIdempotency
 {
