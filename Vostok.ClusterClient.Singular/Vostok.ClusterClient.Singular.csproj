@@ -9,7 +9,7 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>0.1.1</VersionPrefix>
+    <VersionPrefix>0.1.3</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.ClusterClient.Singular</Title>
@@ -42,6 +42,18 @@
     <Reference Include="Vostok.ClusterConfig.Client.Abstractions">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterconfig.client.abstractions\Vostok.ClusterConfig.Client.Abstractions\bin\Release\netstandard2.0\Vostok.ClusterConfig.Client.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.ClusterClient.Datacenters">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterclient.datacenters\Vostok.ClusterClient.Datacenters\bin\Release\netstandard2.0\Vostok.ClusterClient.Datacenters.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Datacenters">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.datacenters\Vostok.Datacenters\bin\Release\netstandard2.0\Vostok.Datacenters.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Logging.Abstractions">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.logging.abstractions\Vostok.Logging.Abstractions\bin\Release\netstandard2.0\Vostok.Logging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Vostok.Configuration.Abstractions">
       <SpecificVersion>False</SpecificVersion>

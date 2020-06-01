@@ -2,13 +2,14 @@
 using JetBrains.Annotations;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
-using Vostok.Clusterclient.Core.Ordering.Weighed.Adaptive;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Strategies.DelayProviders;
 using Vostok.Clusterclient.Core.Transforms;
+using Vostok.ClusterClient.Datacenters;
 using Vostok.Clusterclient.Singular.NonIdempotency;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
+using Vostok.Datacenters;
 using Vostok.Singular.Core;
 using Vostok.Singular.Core.Idempotency;
 
@@ -48,7 +49,9 @@ namespace Vostok.Clusterclient.Singular
             self.SetupWeighedReplicaOrdering(
                 builder =>
                 {
-                    builder.AddAdaptiveHealthModifierWithLinearDecay(TuningPolicies.ByResponseVerdict, TimeSpan.FromMinutes(5));
+                    builder.AddAdaptiveHealthModifierWithLinearDecay(TimeSpan.FromMinutes(5));
+                    builder.SetupAvoidInactiveDatacentersWeightModifier(DatacentersProvider.Get());
+                    builder.SetupBoostLocalDatacentersWeightModifier(DatacentersProvider.Get());
                 });
 
             if (settings.AlternativeDefaultRequestStrategy != null)
@@ -69,7 +72,8 @@ namespace Vostok.Clusterclient.Singular
 
             self.MaxReplicasUsedPerRequest = 3;
 
-            self.TargetServiceName = SingularConstants.ServiceName;
+            self.TargetServiceName = $"{settings.TargetService} via {SingularConstants.ServiceName}";
+            self.TargetEnvironment = settings.TargetEnvironment;
         }
     }
 }
