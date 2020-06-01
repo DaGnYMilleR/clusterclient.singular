@@ -25,9 +25,6 @@ notests *default:
     - vostok.singular.core/src
 
 full-build > notests:
-  deps:
-    - vostok.clusterclient.transport
-    - vostok.logging.console
   build:
     target: Vostok.ClusterClient.Singular.sln
     configuration: Release
