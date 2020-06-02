@@ -24,7 +24,7 @@ notests *default:
     - vostok.clusterclient.topology.cc
     - vostok.clusterconfig.client
     - vostok.clusterconfig.client.abstractions
-    - vostok.singular.core/src
+    - vostok.singular.core/src@public-classes
 
 full-build > notests:
   build:
