@@ -1,3 +1,7 @@
+## 0.1.3 (02-06-2020):
+
+Check idempotency settings.
+
 ## 0.1.2 (27-02-2020):
 
 Prefer local datacenters.
