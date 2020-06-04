@@ -24,9 +24,6 @@
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>
@@ -58,10 +55,6 @@
     <Reference Include="Vostok.Configuration.Abstractions">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.configuration.abstractions\Vostok.Configuration.Abstractions\bin\Release\netstandard2.0\Vostok.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Vostok.Commons.Collections">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.commons.collections\Vostok.Commons.Collections\bin\Release\netstandard2.0\Vostok.Commons.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Vostok.Configuration">
       <SpecificVersion>False</SpecificVersion>

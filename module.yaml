@@ -18,7 +18,7 @@ notests *default:
     - vostok.configuration.sources.cc
     - vostok.configuration.abstractions
     - vostok.configuration
-    - vostok.commons.collections
+    - vostok.commons.collections/src
     - vostok.devtools
     - vostok.clusterclient.core
     - vostok.clusterclient.topology.cc
