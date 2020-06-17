@@ -24,6 +24,13 @@
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\BriefClusterResult.cs" Link="QualityMetrics\BriefClusterResult.cs" />
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\BriefReplicaResult.cs" Link="QualityMetrics\BriefReplicaResult.cs" />
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ClusterResultsAnalyzer.cs" Link="QualityMetrics\ClusterResultsAnalyzer.cs" />
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\MetricsProvider.cs" Link="QualityMetrics\MetricsProvider.cs" />
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ResultReason.cs" Link="QualityMetrics\ResultReason.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>
@@ -79,6 +86,10 @@
     <Reference Include="Vostok.Configuration.Sources">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.configuration.sources\Vostok.Configuration.Sources\bin\Release\netstandard2.0\Vostok.Configuration.Sources.dll</HintPath>
+    </Reference>
+    <Reference Include="Vostok.Metrics">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.metrics\Vostok.Metrics\bin\Release\netstandard2.0\Vostok.Metrics.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
