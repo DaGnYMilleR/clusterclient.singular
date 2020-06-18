@@ -90,7 +90,7 @@ namespace Vostok.Clusterclient.Singular
                 var environment = ClusterConfigClient.Default.Get(DefaultEnvironmentNamePath)?.Value;
                 if (environment == ProdEnvironment || environment == CloudEnvironment)
                 {
-                    var metricsProvider = new MetricsProvider(metricContext, environment, VostokClientName);
+                    var metricsProvider = MetricsProviderCache.Get(metricContext, environment, VostokClientName);
                     self.AddRequestModule(new MetricsModule(metricsProvider));
                 }
             }

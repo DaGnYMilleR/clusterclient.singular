@@ -28,6 +28,7 @@
     <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\BriefReplicaResult.cs" Link="QualityMetrics\BriefReplicaResult.cs" />
     <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ClusterResultsAnalyzer.cs" Link="QualityMetrics\ClusterResultsAnalyzer.cs" />
     <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\MetricsProvider.cs" Link="QualityMetrics\MetricsProvider.cs" />
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\MetricsProviderCache.cs" Link="QualityMetrics\MetricsProviderCache.cs" />
     <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ResultReason.cs" Link="QualityMetrics\ResultReason.cs" />
   </ItemGroup>
   <ItemGroup>
