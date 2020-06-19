@@ -41,8 +41,10 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         }
 
         [TestCase("/foo/bar", "/foo/bar")]
-        [TestCase("/foo/bar?orgId=1&userId=qwerty", "/foo/bar?orgId=1&userId=qwerty")]
+        [TestCase("/foo/bar?orgId=1&userId=qwerty", "/foo/bar")]
         [TestCase("/", "/")]
+        [TestCase("/?", "/")]
+        [TestCase("?", "")]
         public void Should_correct_extract_relative_path_from_relative_urls(string url, string expectedPath)
         {
             request = Request.Get(new Uri(url, UriKind.Relative));
