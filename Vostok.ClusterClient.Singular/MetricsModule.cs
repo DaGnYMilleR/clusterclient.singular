@@ -18,7 +18,7 @@ namespace Vostok.Clusterclient.Singular
         {
             var result = await next(context).ConfigureAwait(false);
 
-            metricsProvider?.RecordRequest(ClusterResultsAnalyzer.FindResultSource(result));
+            metricsProvider?.RecordRequest(ClusterResultsAnalyzer.FindResultReason(result));
 
             return result;
         }
