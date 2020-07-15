@@ -81,4 +81,84 @@
       <HintPath>..\..\vostok.configuration.sources\Vostok.Configuration.Sources\bin\Release\netstandard2.0\Vostok.Configuration.Sources.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\BlackListIdempotencyResolver.cs">
+      <Link>PathPatterns\BlackList\BlackListIdempotencyResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\INonIdempotencySignsSettingsProvider.cs">
+      <Link>PathPatterns\BlackList\INonIdempotencySignsSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\NonIdempotencySign.cs">
+      <Link>PathPatterns\BlackList\NonIdempotencySign.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\NonIdempotencySignsCache.cs">
+      <Link>PathPatterns\BlackList\NonIdempotencySignsCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\NonIdempotencySignsSettingsProvider.cs">
+      <Link>PathPatterns\BlackList\NonIdempotencySignsSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\Settings\NonIdempotencyServiceSettings.cs">
+      <Link>PathPatterns\BlackList\Settings\NonIdempotencyServiceSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\Settings\NonIdempotencySignSettings.cs">
+      <Link>PathPatterns\BlackList\Settings\NonIdempotencySignSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\Settings\NonIdempotencySignsSettings.cs">
+      <Link>PathPatterns\BlackList\Settings\NonIdempotencySignsSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\IclCache.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\IclCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\IclResolver.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\IclResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\IclRulesSettingsProvider.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\IclRulesSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\IdempotencyControlRule.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\IdempotencyControlRule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\IIclRulesSettingsProvider.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\IIclRulesSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencyRuleSetting.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencyRuleSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencyServiceSettings.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencyServiceSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencySettings.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyControlRules\Settings\IdempotencySettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyIdentifier.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyIdentifierCache.cs">
+      <Link>PathPatterns\Idempotency\IdempotencyIdentifierCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IIdempotencyIdentifier.cs">
+      <Link>PathPatterns\Idempotency\IIdempotencyIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IIdempotencySettingsProvider.cs">
+      <Link>PathPatterns\Idempotency\IIdempotencySettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\ISettingsCache.cs">
+      <Link>PathPatterns\ISettingsCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\PathPatternRule.cs">
+      <Link>PathPatterns\PathPatternRule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\PathPatternRuleMatcher.cs">
+      <Link>PathPatterns\PathPatternRuleMatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\SettingsCacheBase.cs">
+      <Link>PathPatterns\SettingsCacheBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\SettingsProvider.cs">
+      <Link>PathPatterns\SettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Wildcard.cs">
+      <Link>PathPatterns\Wildcard.cs</Link>
+    </Compile>
+  </ItemGroup>
 </Project>
