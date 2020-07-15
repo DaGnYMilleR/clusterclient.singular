@@ -1,3 +1,7 @@
+## 0.1.5 (22-06-2020):
+
+Cut query params in idempotency check.
+
 ## 0.1.4 (02-06-2020):
 
 Check idempotency settings.

@@ -13,7 +13,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
     {
         private readonly IRequestStrategy sequential1Strategy;
         private readonly IRequestStrategy forkingStrategy;
-        private IIdempotencyIdentifier idempotencyIdentifier;
+        private readonly IIdempotencyIdentifier idempotencyIdentifier;
 
         public IdempotencySingBasedRequestStrategy(IIdempotencyIdentifier idempotencyIdentifier, IRequestStrategy sequential1Strategy, IRequestStrategy forkingStrategy)
         {
@@ -23,20 +23,29 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
         }
 
         public Task SendAsync(
-            Request request, 
-            RequestParameters parameters, 
-            IRequestSender sender, 
-            IRequestTimeBudget budget, 
-            IEnumerable<Uri> replicas, 
-            int replicasCount, 
+            Request request,
+            RequestParameters parameters,
+            IRequestSender sender,
+            IRequestTimeBudget budget,
+            IEnumerable<Uri> replicas,
+            int replicasCount,
             CancellationToken cancellationToken)
         {
-            var url = request.Url;
-            var path = url.IsAbsoluteUri ? url.AbsolutePath : url.OriginalString;
-            
+            var path = GetRequestPath(request.Url);
+
             var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, path) ? forkingStrategy : sequential1Strategy;
 
             return selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken);
+        }
+
+        private static string GetRequestPath(Uri url)
+        {
+            if (url.IsAbsoluteUri)
+                return url.AbsolutePath;
+
+            var originalString = url.OriginalString;
+            var queryIndex = originalString.IndexOf('?');
+            return queryIndex > -1 ? originalString.Substring(0, queryIndex) : originalString;
         }
     }
 }
