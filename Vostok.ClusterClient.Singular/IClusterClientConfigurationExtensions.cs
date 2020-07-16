@@ -87,8 +87,8 @@ namespace Vostok.Clusterclient.Singular
 
             if (metricContext != null)
             {
-                var environment = ClusterConfigClient.Default.Get(DefaultEnvironmentNamePath)?.Value;
-                if (environment == ProdEnvironment || environment == CloudEnvironment)
+                var environment = ClusterConfigClient.Default.Get(SingularConstants.EnvironmentNamePath)?.Value;
+                if (environment == SingularConstants.ProdEnvironment || environment == SingularConstants.CloudEnvironment)
                 {
                     var metricsProvider = MetricsProviderCache.Get(metricContext, environment, VostokClientName);
                     self.AddRequestModule(new MetricsModule(metricsProvider));
@@ -96,9 +96,6 @@ namespace Vostok.Clusterclient.Singular
             }
         }
 
-        private const string DefaultEnvironmentNamePath = "vostok/environment/DefaultEnvironmentName";
-        private const string CloudEnvironment = "cloud";
-        private const string ProdEnvironment = "prod";
         private const string VostokClientName = "vostok";
     }
 }
