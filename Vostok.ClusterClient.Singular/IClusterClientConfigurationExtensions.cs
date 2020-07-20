@@ -11,7 +11,7 @@ using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
 using Vostok.Datacenters;
 using Vostok.Singular.Core;
-using Vostok.Singular.Core.Idempotency;
+using Vostok.Singular.Core.PathPatterns.Idempotency;
 
 namespace Vostok.Clusterclient.Singular
 {

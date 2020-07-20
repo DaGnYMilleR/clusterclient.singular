@@ -81,14 +81,4 @@
       <HintPath>..\..\vostok.configuration.sources\Vostok.Configuration.Sources\bin\Release\netstandard2.0\Vostok.Configuration.Sources.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\*.cs" LinkBase="PathPatterns"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\*.cs" LinkBase="PathPatterns/BlackList"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\Settings\*.cs" LinkBase="PathPatterns\BlackList\Settings"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\*.cs" LinkBase="PathPatterns\Idempotency"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\*.cs" 
-             LinkBase="PathPatterns\Idempotency\IdempotencyControlRules"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\Settings\*.cs" 
-             LinkBase="PathPatterns\Idempotency\IdempotencyControlRules\Settings"/>
-  </ItemGroup>
 </Project>
