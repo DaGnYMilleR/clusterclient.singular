@@ -11,7 +11,9 @@ using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
 using Vostok.Datacenters;
 using Vostok.Singular.Core;
-using Vostok.Singular.Core.Idempotency;
+using Vostok.Metrics;
+using Vostok.Singular.Core.PathPatterns.Idempotency;
+using Vostok.Singular.Core.QualityMetrics;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -74,6 +76,26 @@ namespace Vostok.Clusterclient.Singular
 
             self.TargetServiceName = $"{settings.TargetService} via {SingularConstants.ServiceName}";
             self.TargetEnvironment = settings.TargetEnvironment;
+
+            InitializeMetricsProviderIfNeeded(self, settings.MetricContext);
         }
+
+        private static void InitializeMetricsProviderIfNeeded(IClusterClientConfiguration self, IMetricContext metricContext)
+        {
+            if (metricContext == null && MetricContextProvider.IsConfigured)
+                metricContext = MetricContextProvider.Get();
+
+            if (metricContext != null)
+            {
+                var environment = ClusterConfigClient.Default.Get(SingularConstants.EnvironmentNamePath)?.Value;
+                if (environment == SingularConstants.ProdEnvironment || environment == SingularConstants.CloudEnvironment)
+                {
+                    var metricsProvider = MetricsProviderCache.Get(metricContext, environment, VostokClientName);
+                    self.AddRequestModule(new MetricsModule(metricsProvider));
+                }
+            }
+        }
+
+        private const string VostokClientName = "vostok";
     }
 }

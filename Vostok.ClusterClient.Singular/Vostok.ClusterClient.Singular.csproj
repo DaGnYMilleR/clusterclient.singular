@@ -9,7 +9,7 @@
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <VersionPrefix>0.1.6</VersionPrefix>
+    <VersionPrefix>0.1.7</VersionPrefix>
   </PropertyGroup>
   <PropertyGroup>
     <Title>Vostok.ClusterClient.Singular</Title>
@@ -23,6 +23,9 @@
     <PackageReleaseNotes>https://github.com/vostok/clusterclient.singular/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ClusterResultsAnalyzer.cs" Link="QualityMetrics\Commons\ClusterResultsAnalyzer.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
@@ -80,15 +83,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.configuration.sources\Vostok.Configuration.Sources\bin\Release\netstandard2.0\Vostok.Configuration.Sources.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\*.cs" LinkBase="PathPatterns"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\*.cs" LinkBase="PathPatterns/BlackList"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\BlackList\Settings\*.cs" LinkBase="PathPatterns\BlackList\Settings"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\*.cs" LinkBase="PathPatterns\Idempotency"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\*.cs" 
-             LinkBase="PathPatterns\Idempotency\IdempotencyControlRules"/>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\PathPatterns\Idempotency\IdempotencyControlRules\Settings\*.cs" 
-             LinkBase="PathPatterns\Idempotency\IdempotencyControlRules\Settings"/>
+    <Reference Include="Vostok.Metrics">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.metrics\Vostok.Metrics\bin\Release\netstandard2.0\Vostok.Metrics.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

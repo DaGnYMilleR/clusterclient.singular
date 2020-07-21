@@ -4,6 +4,7 @@ using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
 using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Singular.Core;
+using Vostok.Metrics;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -59,5 +60,10 @@ namespace Vostok.Clusterclient.Singular
         /// Disable usage of idempotency settings configured in ClusterConfig for specific services.
         /// </summary>
         public bool DisableStrategyBasedOnBackendSettings { get; set; }
+
+        /// <summary>
+        /// Explicitly setting a <see cref="IMetricContext"/> allows the client from writing metrics about quality/>.
+        /// </summary>
+        public IMetricContext MetricContext { get; set; }
     }
 }

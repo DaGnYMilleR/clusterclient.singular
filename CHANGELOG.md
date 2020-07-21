@@ -1,3 +1,7 @@
+## 0.1.6 (20-07-2020):
+
+Add metrics about the quality of singular work.
+
 ## 0.1.5 (22-06-2020):
 
 Cut query params in idempotency check.

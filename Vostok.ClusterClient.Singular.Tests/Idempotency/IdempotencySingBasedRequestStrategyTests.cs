@@ -5,8 +5,7 @@ using NUnit.Framework;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Singular.NonIdempotency;
-using Vostok.Singular.Core.Idempotency;
-
+using Vostok.Singular.Core.PathPatterns.Idempotency;
 
 namespace Vostok.Clusterclient.Singular.Tests.Idempotency
 {
