@@ -23,9 +23,9 @@ namespace Vostok.Clusterclient.Singular
         /// <param name="serviceName">See <see cref="TargetService"/>.</param>
         public SingularClientSettings([NotNull] string serviceName)
         {
-            var environment = FlowingContext.Properties.Get<string>("forced-environment")
+            var environment = FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
                               ?? ClusterConfig.Client.ClusterConfigClient.Default.Zone
-                              ?? "default";
+                              ?? SingularConstants.DefaultZone;
 
             TargetEnvironment = environment;
             TargetService = serviceName ?? throw new ArgumentNullException(nameof(serviceName));
