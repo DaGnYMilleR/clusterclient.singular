@@ -9,6 +9,7 @@ notests *default:
     - Vostok.ClusterClient.Singular/bin/Release/netstandard2.0/Vostok.ClusterClient.Singular.dll
 
   deps:
+    - vostok.context
     - vostok.metrics
     - vostok.logging.abstractions
     - vostok.datacenters

@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
 using Vostok.ClusterConfig.Client.Abstractions;
+using Vostok.Context;
 using Vostok.Singular.Core;
 using Vostok.Metrics;
 
@@ -16,6 +17,17 @@ namespace Vostok.Clusterclient.Singular
         public SingularClientSettings([NotNull] string environmentName, [NotNull] string serviceName)
         {
             TargetEnvironment = environmentName ?? throw new ArgumentNullException(nameof(environmentName));
+            TargetService = serviceName ?? throw new ArgumentNullException(nameof(serviceName));
+        }
+
+        /// <param name="serviceName">See <see cref="TargetService"/>.</param>
+        public SingularClientSettings([NotNull] string serviceName)
+        {
+            var environment = FlowingContext.Properties.Get<string>("forced-environment")
+                              ?? ClusterConfig.Client.ClusterConfigClient.Default.Zone
+                              ?? "default";
+
+            TargetEnvironment = environment;
             TargetService = serviceName ?? throw new ArgumentNullException(nameof(serviceName));
         }
 
