@@ -1,3 +1,7 @@
+## 0.1.7 (03-09-2020)
+
+IdempotencySettings per environment configuration.
+
 ## 0.1.6 (20-07-2020):
 
 Add metrics about the quality of singular work.

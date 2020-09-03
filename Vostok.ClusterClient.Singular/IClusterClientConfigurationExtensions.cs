@@ -68,7 +68,7 @@ namespace Vostok.Clusterclient.Singular
             {
                 var sequential1Strategy = Strategy.Sequential1;
                 var forkingStrategy = new ForkingRequestStrategy(new EqualDelaysProvider(SingularClientConstants.ForkingStrategyParallelismLevel), SingularClientConstants.ForkingStrategyParallelismLevel);
-                var idempotencyIdentifier = IdempotencyIdentifierCache.Get(settings.TargetService);
+                var idempotencyIdentifier = IdempotencyIdentifierCache.Get(settings.TargetEnvironment, settings.TargetService);
                 self.DefaultRequestStrategy = new IdempotencySingBasedRequestStrategy(idempotencyIdentifier, sequential1Strategy, forkingStrategy);
             }
 
