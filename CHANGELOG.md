@@ -1,3 +1,9 @@
+## 0.1.8 (08-09-2020)
+
+New overload for `SingularClientSettings` constructor - now we can take value for `environmentName` from:
+  * `forced.sd.environment` distributed property
+  * ClusterConfig client zone
+
 ## 0.1.7 (03-09-2020)
 
 IdempotencySettings per environment configuration.
