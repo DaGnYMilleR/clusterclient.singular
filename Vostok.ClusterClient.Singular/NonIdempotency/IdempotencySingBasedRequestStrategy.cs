@@ -35,8 +35,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
 
             var selectedStrategy = await idempotencyIdentifier.IsIdempotent(request.Method, path).ConfigureAwait(false) ? forkingStrategy : sequential1Strategy;
 
-            await selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken).ConfigureAwait(false
-            );
+            await selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken).ConfigureAwait(false);
         }
 
         private static string GetRequestPath(Uri url)
