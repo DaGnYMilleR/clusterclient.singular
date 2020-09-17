@@ -36,7 +36,7 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         {
             request = Request.Get(url);
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, expectedPath);
+            idempotencyIdentifier.Received(1).IsIdempotentAsync(request.Method, expectedPath);
         }
 
         [TestCase("/foo/bar", "/foo/bar")]
@@ -49,13 +49,13 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         {
             request = Request.Get(new Uri(url, UriKind.Relative));
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
-            idempotencyIdentifier.Received(1).IsIdempotent(request.Method, expectedPath);
+            idempotencyIdentifier.Received(1).IsIdempotentAsync(request.Method, expectedPath);
         }
 
         [Test]
         public void IdempotencySingBasedRequestStrategy_should_select_sequential_strategy_for_non_idempotent_requests()
         {
-            idempotencyIdentifier.IsIdempotent("", "").ReturnsForAnyArgs(false);
+            idempotencyIdentifier.IsIdempotentAsync("", "").ReturnsForAnyArgs(false);
 
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
             sequential1Strategy.Received(1).SendAsync(request, null, null, null, null, 1, CancellationToken.None);
@@ -65,7 +65,7 @@ namespace Vostok.Clusterclient.Singular.Tests.Idempotency
         [Test]
         public void IdempotencySingBasedRequestStrategy_should_select_forking_strategy_for_idempotent_requests()
         {
-            idempotencyIdentifier.IsIdempotent("", "").ReturnsForAnyArgs(true);
+            idempotencyIdentifier.IsIdempotentAsync("", "").ReturnsForAnyArgs(true);
 
             strategy.SendAsync(request, null, null, null, null, 1, CancellationToken.None).Wait();
             sequential1Strategy.DidNotReceive().SendAsync(request, null, null, null, null, 1, CancellationToken.None);

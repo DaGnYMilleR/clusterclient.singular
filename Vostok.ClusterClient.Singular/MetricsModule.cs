@@ -14,6 +14,7 @@ namespace Vostok.Clusterclient.Singular
         {
             this.metricsProvider = metricsProvider;
         }
+
         public async Task<ClusterResult> ExecuteAsync(IRequestContext context, Func<IRequestContext, Task<ClusterResult>> next)
         {
             var result = await next(context).ConfigureAwait(false);

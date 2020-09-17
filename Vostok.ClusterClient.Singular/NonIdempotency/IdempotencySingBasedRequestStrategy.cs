@@ -22,7 +22,7 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
             this.idempotencyIdentifier = idempotencyIdentifier;
         }
 
-        public Task SendAsync(
+        public async Task SendAsync(
             Request request,
             RequestParameters parameters,
             IRequestSender sender,
@@ -33,9 +33,9 @@ namespace Vostok.Clusterclient.Singular.NonIdempotency
         {
             var path = GetRequestPath(request.Url);
 
-            var selectedStrategy = idempotencyIdentifier.IsIdempotent(request.Method, path) ? forkingStrategy : sequential1Strategy;
+            var selectedStrategy = await idempotencyIdentifier.IsIdempotentAsync(request.Method, path).ConfigureAwait(false) ? forkingStrategy : sequential1Strategy;
 
-            return selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken);
+            await selectedStrategy.SendAsync(request, parameters, sender, budget, replicas, replicasCount, cancellationToken).ConfigureAwait(false);
         }
 
         private static string GetRequestPath(Uri url)
