@@ -1,3 +1,7 @@
+## 0.1.9 (17-09-2020)
+
+Using async caches from `vostok.singular.core`
+
 ## 0.1.8 (08-09-2020)
 
 New overload for `SingularClientSettings` constructor - now we can take value for `environmentName` from:
