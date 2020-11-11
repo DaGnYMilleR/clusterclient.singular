@@ -24,7 +24,7 @@ notests *default:
     - vostok.commons.environment/src
     - vostok.commons.threading/src
     - vostok.devtools
-    - vostok.clusterclient.core@borovskyav\/sd-tags
+    - vostok.clusterclient.core@replica-filters
     - vostok.clusterclient.topology.cc
     - vostok.clusterconfig.client
     - vostok.clusterconfig.client.abstractions
