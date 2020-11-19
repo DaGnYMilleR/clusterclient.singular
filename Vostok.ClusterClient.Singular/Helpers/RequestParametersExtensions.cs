@@ -11,7 +11,7 @@ namespace Vostok.Clusterclient.Singular.Helpers
         /// <summary>
         /// <para> Sets given <paramref name="filterString" /> replicas filtering expression in string format to <paramref name="requestParameters" />. </para>
         /// <para> This expression will be sent via request headers and executed in Singular. </para> 
-        /// <para> If <paramref name="filterString" /> returns false then replica will be filtered.</para>
+        /// <para> If an expression derived from a <paramref name="filterString" /> returns false then replica will be filtered.</para>
         /// </summary>
         public static RequestParameters SetTagsFilter(this RequestParameters requestParameters, string filterString)
             => requestParameters.WithProperty(RequestParametersTagsFilterKey, filterString);
