@@ -24,9 +24,6 @@
     <RepositoryUrl>https://github.com/vostok/clusterclient.singular</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\vostok.singular.core\Vostok.Singular.Core\QualityMetrics\ClusterResultsAnalyzer.cs" Link="QualityMetrics\Commons\ClusterResultsAnalyzer.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="Vostok.ClusterClient.Core">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.clusterclient.core\Vostok.ClusterClient.Core\bin\Release\netstandard2.0\Vostok.ClusterClient.Core.dll</HintPath>

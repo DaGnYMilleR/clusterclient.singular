@@ -5,9 +5,9 @@ using Vostok.Clusterclient.Core.Ordering.Weighed;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Transforms;
 using Vostok.ClusterClient.Datacenters;
-using Vostok.Clusterclient.Singular.NonIdempotency;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.ClusterConfig.Client;
+using Vostok.ClusterConfig.Client.Abstractions;
 using Vostok.Datacenters;
 using Vostok.Metrics;
 using Vostok.Singular.Core;
@@ -32,10 +32,12 @@ namespace Vostok.Clusterclient.Singular
             if (settings == null)
                 throw new ArgumentNullException(nameof(settings));
 
+            var clusterConfigClient = ClusterConfigClient.Default;
+
             if (settings.AlternativeClusterProvider != null)
                 self.ClusterProvider = settings.AlternativeClusterProvider;
             else
-                self.SetupClusterConfigTopology(ClusterConfigClient.Default, SingularConstants.CCTopologyName);
+                self.SetupClusterConfigTopology(clusterConfigClient, SingularConstants.CCTopologyName);
 
             self.RequestTransforms.Add(
                 new AdHocRequestTransform(
@@ -53,25 +55,25 @@ namespace Vostok.Clusterclient.Singular
                 });
 
             var forkingStrategy = Strategy.Forking(SingularClientConstants.ForkingStrategyParallelismLevel);
-            var idempotencyIdentifier = IdempotencyIdentifierCache.Get(settings.TargetEnvironment, settings.TargetService);
-            self.DefaultRequestStrategy = new IdempotencySingBasedRequestStrategy(idempotencyIdentifier, Strategy.Sequential1, forkingStrategy);
+            var idempotencyIdentifier = IdempotencyIdentifierCache.Get(clusterConfigClient, settings.TargetEnvironment, settings.TargetService);
+            self.DefaultRequestStrategy = new IdempotencySignBasedRequestStrategy(idempotencyIdentifier, Strategy.Sequential1, forkingStrategy);
 
             self.MaxReplicasUsedPerRequest = SingularClientConstants.ForkingStrategyParallelismLevel;
 
             self.TargetServiceName = $"{settings.TargetService} via {SingularConstants.ServiceName}";
             self.TargetEnvironment = settings.TargetEnvironment;
 
-            InitializeMetricsProviderIfNeeded(self, settings.MetricContext);
+            InitializeMetricsProviderIfNeeded(self, settings.MetricContext, clusterConfigClient);
         }
 
-        private static void InitializeMetricsProviderIfNeeded(IClusterClientConfiguration self, IMetricContext metricContext)
+        private static void InitializeMetricsProviderIfNeeded(IClusterClientConfiguration self, IMetricContext metricContext, IClusterConfigClient clusterConfigClient)
         {
             if (metricContext == null && MetricContextProvider.IsConfigured)
                 metricContext = MetricContextProvider.Get();
 
             if (metricContext != null)
             {
-                var environment = ClusterConfigClient.Default.Get(SingularConstants.EnvironmentNamePath)?.Value;
+                var environment = clusterConfigClient.Get(SingularConstants.EnvironmentNamePath)?.Value;
                 if (environment == SingularConstants.ProdEnvironment || environment == SingularConstants.CloudEnvironment)
                 {
                     var metricsProvider = MetricsProviderCache.Get(metricContext, environment, vostokClientName);
