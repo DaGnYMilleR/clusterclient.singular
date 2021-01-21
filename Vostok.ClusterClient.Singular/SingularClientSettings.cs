@@ -1,11 +1,10 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
-using Vostok.ClusterConfig.Client.Abstractions;
+using Vostok.ClusterConfig.Client;
 using Vostok.Context;
-using Vostok.Singular.Core;
 using Vostok.Metrics;
+using Vostok.Singular.Core;
 
 namespace Vostok.Clusterclient.Singular
 {
@@ -24,7 +23,7 @@ namespace Vostok.Clusterclient.Singular
         public SingularClientSettings([NotNull] string serviceName)
         {
             var environment = FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
-                              ?? ClusterConfig.Client.ClusterConfigClient.Default.Zone
+                              ?? ClusterConfigClient.Default.Zone
                               ?? SingularConstants.DefaultZone;
 
             TargetEnvironment = environment;
@@ -44,38 +43,15 @@ namespace Vostok.Clusterclient.Singular
         public string TargetService { get; }
 
         /// <summary>
-        /// Path to ClusterConfig-based topology containing addresses of Singular replicas.
-        /// </summary>
-        [CanBeNull]
-        public string ClusterConfigTopologyPath { get; set; } = SingularConstants.CCTopologyName;
-
-        /// <summary>
-        /// <para>Use this property to provide a custom instance of ClusterConfig client to fetch topology specified by <see cref="ClusterConfigTopologyPath"/>.</para>
-        /// <para>If not set, default global client instance is used.</para>
-        /// </summary>
-        [CanBeNull]
-        public IClusterConfigClient ClusterConfigClient { get; set; }
-
-        /// <summary>
-        /// Explicitly setting a custom <see cref="IClusterProvider"/> prevents the client from using ClusterConfig-based topology specified by <see cref="ClusterConfigTopologyPath"/>.
+        /// Explicitly setting a custom <see cref="IClusterProvider"/> prevents the client from using Singular topology specified in ClusterConfig.
         /// </summary>
         [CanBeNull]
         public IClusterProvider AlternativeClusterProvider { get; set; }
 
         /// <summary>
-        /// Explicitly setting a custom <see cref="IRequestStrategy"/> prevents the client from using IdempotencySign-based strategy/>.
+        /// Explicitly setting a <see cref="IMetricContext"/> allows the client from writing metrics about quality.
         /// </summary>
         [CanBeNull]
-        public IRequestStrategy AlternativeDefaultRequestStrategy { get; set; }
-
-        /// <summary>
-        /// Disable usage of idempotency settings configured in ClusterConfig for specific services.
-        /// </summary>
-        public bool DisableStrategyBasedOnBackendSettings { get; set; }
-
-        /// <summary>
-        /// Explicitly setting a <see cref="IMetricContext"/> allows the client from writing metrics about quality/>.
-        /// </summary>
         public IMetricContext MetricContext { get; set; }
     }
 }
