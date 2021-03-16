@@ -1,6 +1,10 @@
+## 0.1.10 (16-03-2021)
+
+Implement service mesh support based on "singular instance per bare metal host" approach (PR #[10](https://github.com/vostok/clusterclient.singular/pull/10)).
+
 ## 0.1.9 (17-09-2020)
 
-Using async caches from `vostok.singular.core`
+Using async caches from `vostok.singular.core`.
 
 ## 0.1.8 (08-09-2020)
 
