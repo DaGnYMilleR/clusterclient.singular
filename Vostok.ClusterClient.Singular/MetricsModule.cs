@@ -4,11 +4,13 @@ using Vostok.Clusterclient.Core.Model;
 using Vostok.Clusterclient.Core.Modules;
 using Vostok.Singular.Core.QualityMetrics;
 
+#nullable enable
+
 namespace Vostok.Clusterclient.Singular
 {
     internal class MetricsModule : IRequestModule
     {
-        private MetricsProvider metricsProvider;
+        private readonly MetricsProvider metricsProvider;
 
         public MetricsModule(MetricsProvider metricsProvider)
         {
@@ -19,7 +21,7 @@ namespace Vostok.Clusterclient.Singular
         {
             var result = await next(context).ConfigureAwait(false);
 
-            metricsProvider?.RecordRequest(ClusterResultsAnalyzer.FindResultReason(result));
+            metricsProvider.RecordRequest(ClusterResultsAnalyzer.FindResultReason(result));
 
             return result;
         }
