@@ -1,3 +1,7 @@
+## 0.1.11 (30-03-2021)
+
+Customize "local" singular host name and port through environment variables (PR #[11](https://github.com/vostok/clusterclient.singular/pull/11)).
+
 ## 0.1.10 (16-03-2021)
 
 Implement service mesh support based on "singular instance per bare metal host" approach (PR #[10](https://github.com/vostok/clusterclient.singular/pull/10)).
