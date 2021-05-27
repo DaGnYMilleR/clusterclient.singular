@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Modules;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
+using Vostok.Clusterclient.Core.Ordering.Weighed.Relative;
 using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Transforms;
 using Vostok.ClusterClient.Datacenters;
@@ -57,7 +58,7 @@ namespace Vostok.Clusterclient.Singular
                 builder =>
                 {
                     var datacenters = DatacentersProvider.Get();
-                    builder.AddAdaptiveHealthModifierWithLinearDecay(TimeSpan.FromMinutes(5));
+                    builder.AddRelativeWeightModifier(new RelativeWeightSettings());
                     builder.SetupAvoidInactiveDatacentersWeightModifier(datacenters);
                     builder.SetupBoostLocalDatacentersWeightModifier(datacenters);
                 });
