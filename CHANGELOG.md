@@ -1,3 +1,7 @@
+## 0.1.12 (27-05-2021)
+
+Add RelativeWeightModifier instead AdaptiveHealthModifier.
+
 ## 0.1.11 (30-03-2021)
 
 Customize "local" singular host name and port through environment variables (PR #[11](https://github.com/vostok/clusterclient.singular/pull/11)).
