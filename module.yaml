@@ -24,11 +24,11 @@ notests *default:
     - vostok.commons.environment/src
     - vostok.commons.threading/src
     - vostok.devtools
-    - vostok.clusterclient.core@replica-filters
+    - vostok.clusterclient.core
     - vostok.clusterclient.topology.cc
     - vostok.clusterconfig.client
     - vostok.clusterconfig.client.abstractions
-    - vostok.singular.core/src@borovskyav\/sd-tags 
+    - vostok.singular.core/src
 
 full-build > notests:
   build:
