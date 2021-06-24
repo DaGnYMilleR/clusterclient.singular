@@ -1,3 +1,7 @@
+## 0.1.13 (24-06-2021)
+
+Added replica tags filters filling to singular headers.
+
 ## 0.1.12 (27-05-2021)
 
 Add RelativeWeightModifier instead AdaptiveHealthModifier.
