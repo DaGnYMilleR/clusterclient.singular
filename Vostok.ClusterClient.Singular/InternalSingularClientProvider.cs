@@ -1,7 +1,9 @@
-﻿using Vostok.Clusterclient.Core;
+﻿using System;
+using Vostok.Clusterclient.Core;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
 using Vostok.Clusterclient.Core.Ordering.Weighed.Relative;
 using Vostok.Clusterclient.Core.Strategies;
+using Vostok.Clusterclient.Core.Topology;
 using Vostok.ClusterClient.Datacenters;
 using Vostok.Clusterclient.Topology.CC;
 using Vostok.Clusterclient.Transport;
@@ -17,7 +19,7 @@ namespace Vostok.Clusterclient.Singular
         private static readonly object Sync = new object();
         private static volatile IClusterClient singularClient;
 
-        public static IClusterClient Get(ILog log = null)
+        public static IClusterClient Get(ILog log = null, IClusterProvider alternativeCluster = null)
         {
             if (singularClient != null)
                 return singularClient;
@@ -25,20 +27,19 @@ namespace Vostok.Clusterclient.Singular
             lock (Sync)
             {
                 // ReSharper disable once ConvertToNullCoalescingCompoundAssignment
-                singularClient = singularClient ?? Create(log);
+                singularClient = singularClient ?? Create(log, alternativeCluster);
                 return singularClient;
             }
         }
 
-        private static IClusterClient Create(ILog log = null)
+        internal static IClusterClient Create(ILog log = null, IClusterProvider alternativeCluster = null)
         {
             return new Core.ClusterClient(log ?? LogProvider.Get(),
                 configuration =>
                 {
-                    configuration.AddRequestTransform(request => request.WithHeader(SingularHeaders.XSingularInternalRequest, string.Empty));
-                    
                     configuration.SetupUniversalTransport();
-
+                    configuration.ClusterProvider = alternativeCluster ?? 
+                                                    new ClusterConfigClusterProvider(ClusterConfigClient.Default, SingularConstants.CCTopologyName, log ?? LogProvider.Get());
                     configuration.SetupWeighedReplicaOrdering(
                         builder =>
                         {
@@ -50,13 +51,27 @@ namespace Vostok.Clusterclient.Singular
 
                     configuration.TargetEnvironment = SingularConstants.DefaultZone;
                     configuration.TargetServiceName = SingularConstants.ServiceName;
-
-                    configuration.SetupClusterConfigTopology(ClusterConfigClient.Default, SingularConstants.CCTopologyName);
-                    
                     configuration.DefaultRequestStrategy = Strategy.Forking(SingularClientConstants.ForkingStrategyParallelismLevel);
-                    
                     configuration.MaxReplicasUsedPerRequest = SingularClientConstants.ForkingStrategyParallelismLevel;
                 });
+        }
+
+        public static bool TryConfigure(IClusterClient newClient)
+        {
+            if (newClient == null)
+                throw new ArgumentNullException(nameof(newClient));
+
+            if (singularClient != null)
+                return false;
+
+            lock (Sync)
+            {
+                if (singularClient != null)
+                    return false;
+
+                singularClient = newClient;
+                return true;
+            }
         }
     }
 }
