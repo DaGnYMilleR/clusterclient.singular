@@ -29,7 +29,7 @@ notests *default:
     - vostok.clusterclient.topology.cc
     - vostok.clusterconfig.client
     - vostok.clusterconfig.client.abstractions
-    - vostok.singular.core/src@idempotency_settings_from_singular
+    - vostok.singular.core/src@idemotency_settings_from_singular
 
 full-build > notests:
   build:
