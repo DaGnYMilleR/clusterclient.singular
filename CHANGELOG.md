@@ -1,3 +1,7 @@
+## 0.1.14 (10-11-2021)
+
+Take idempotency settings from the singular instead ClusterConfig.
+
 ## 0.1.13 (24-06-2021)
 
 Added replica tags filters filling to singular headers.
