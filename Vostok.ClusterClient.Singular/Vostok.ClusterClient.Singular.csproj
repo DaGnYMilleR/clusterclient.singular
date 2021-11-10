@@ -91,5 +91,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\vostok.context\Vostok.Context\bin\Release\netstandard2.0\Vostok.Context.dll</HintPath>
     </Reference>
+    <Reference Include="Vostok.ClusterClient.Transport">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.clusterclient.transport\Vostok.ClusterClient.Transport\bin\Release\netstandard2.0\Vostok.ClusterClient.Transport.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
