@@ -1,6 +1,6 @@
 # Vostok.ClusterClient.Singular
 
-[![Build status](https://ci.appveyor.com/api/projects/status/345a9pahoo02x1du/branch/master?svg=true)](https://ci.appveyor.com/project/vostok/clusterclient-singular/branch/master)
+[![Build & Test & Publish](https://github.com/vostok/clusterclient.singular/actions/workflows/ci.yml/badge.svg)](https://github.com/vostok/clusterclient.singular/actions/workflows/ci.yml)
 [![NuGet](https://img.shields.io/nuget/v/Vostok.ClusterClient.Singular.svg)](https://www.nuget.org/packages/Vostok.ClusterClient.Singular)
 
 This module allows to set up ClusterClient to send requests via Singular API gateway.
