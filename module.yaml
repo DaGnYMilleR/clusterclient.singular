@@ -32,6 +32,10 @@ notests *default:
     - vostok.singular.core/src
 
 full-build > notests:
+  deps:
+    - -vostok.devtools
+    - vostok.devtools@with-net6.0
+
   build:
     target: Vostok.ClusterClient.Singular.sln
     configuration: Release
