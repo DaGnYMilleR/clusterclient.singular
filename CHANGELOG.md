@@ -1,3 +1,7 @@
+## 0.1.15 (06-12-2021):
+
+Added `net6.0` target.
+
 ## 0.1.14 (10-11-2021)
 
 Take idempotency settings from the singular instead ClusterConfig.
