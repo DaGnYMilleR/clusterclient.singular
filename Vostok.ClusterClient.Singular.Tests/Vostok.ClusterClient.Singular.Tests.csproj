@@ -14,4 +14,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Vostok.ClusterClient.Singular\Vostok.ClusterClient.Singular.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Vostok.Context">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\vostok.context\Vostok.Context\bin\Release\$(ReferencesFramework)\Vostok.Context.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
