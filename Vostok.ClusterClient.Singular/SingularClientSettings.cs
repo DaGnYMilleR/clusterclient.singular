@@ -13,28 +13,29 @@ namespace Vostok.Clusterclient.Singular
     [PublicAPI]
     public class SingularClientSettings
     {
+        private string? explicitTargetEnvironment;
+
         /// <param name="environmentName">See <see cref="TargetEnvironment" />.</param>
         /// <param name="serviceName">See <see cref="TargetService" />.</param>
         public SingularClientSettings(string environmentName, string serviceName)
         {
-            TargetEnvironment = environmentName ?? throw new ArgumentNullException(nameof(environmentName));
+            explicitTargetEnvironment = environmentName ?? throw new ArgumentNullException(nameof(environmentName));
             TargetService = serviceName ?? throw new ArgumentNullException(nameof(serviceName));
         }
 
         /// <param name="serviceName">See <see cref="TargetService" />.</param>
         public SingularClientSettings(string serviceName)
         {
-            TargetEnvironment = FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
-                                ?? ClusterConfigClient.Default.Zone
-                                ?? SingularConstants.DefaultZone;
-
             TargetService = serviceName ?? throw new ArgumentNullException(nameof(serviceName));
         }
 
         /// <summary>
-        /// Target environment in service discovery system to send requests to. When in doubt, use <c>'default'</c> as a value for this parameter.
+        /// Target environment in service discovery system to send requests to.
         /// </summary>
-        public string TargetEnvironment { get; }
+        public string TargetEnvironment => FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
+                                           ?? explicitTargetEnvironment
+                                           ?? ClusterConfigClient.Default.Zone
+                                           ?? SingularConstants.DefaultZone;
 
         /// <summary>
         /// Target service to send requests to. This value must exactly match the name that service uses to register in service discovery system.
