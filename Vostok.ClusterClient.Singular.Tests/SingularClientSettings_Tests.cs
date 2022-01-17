@@ -9,7 +9,7 @@ using Vostok.Singular.Core;
 namespace Vostok.ClusterClient.Singular.Tests
 {
     [TestFixture]
-    public class SingularClientSettings_should
+    public class SingularClientSettings_Tests
     {
         private const string ServiceName = "SomeService";
 
@@ -20,21 +20,21 @@ namespace Vostok.ClusterClient.Singular.Tests
         }
 
         [Test]
-        public void return_default_target_environment()
+        public void TargetEnvironment_should_return_default_value_when_nothing_else_is_specified()
         {
             var settings = new SingularClientSettings(ServiceName);
             settings.TargetEnvironment.Should().Be(SingularConstants.DefaultZone);
         }
 
         [Test]
-        public void return_explicitly_set_target_environment()
+        public void TargetEnvironment_should_return_explicitly_set_value_when_no_forced_sd_environment_is_set()
         {
             var settings = new SingularClientSettings("CustomEnvironment", ServiceName);
             settings.TargetEnvironment.Should().Be("CustomEnvironment");
         }
 
         [Test]
-        public void return_explicitly_set_target_environment_even_when_forced_sd_environment_is_set()
+        public void TargetEnvironment_should_return_explicitly_set_value_when_forced_sd_environment_is_set()
         {
             var settings = new SingularClientSettings("CustomEnvironment", ServiceName);
 
@@ -44,7 +44,7 @@ namespace Vostok.ClusterClient.Singular.Tests
         }
 
         [Test]
-        public void use_forced_sd_environment_as_target_environment()
+        public void TargetEnvironment_should_return_forced_sd_environment()
         {
             var settings = new SingularClientSettings(ServiceName);
 
