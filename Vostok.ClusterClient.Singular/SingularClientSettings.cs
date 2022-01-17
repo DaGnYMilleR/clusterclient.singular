@@ -32,8 +32,8 @@ namespace Vostok.Clusterclient.Singular
         /// <summary>
         /// Target environment in service discovery system to send requests to.
         /// </summary>
-        public string TargetEnvironment => explicitTargetEnvironment
-                                           ?? FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
+        public string TargetEnvironment => FlowingContext.Properties.Get<string>(SingularConstants.DistributedProperties.ForcedEnvironment)
+                                           ?? explicitTargetEnvironment
                                            ?? ClusterConfigClient.Default.Zone
                                            ?? SingularConstants.DefaultZone;
 

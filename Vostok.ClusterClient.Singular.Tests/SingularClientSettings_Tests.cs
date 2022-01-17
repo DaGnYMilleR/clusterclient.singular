@@ -34,17 +34,17 @@ namespace Vostok.ClusterClient.Singular.Tests
         }
 
         [Test]
-        public void TargetEnvironment_should_return_explicitly_set_value_when_forced_sd_environment_is_set()
+        public void TargetEnvironment_should_return_forced_sd_environment_when_target_environment_was_set_via_constructor()
         {
             var settings = new SingularClientSettings("CustomEnvironment", ServiceName);
 
             FlowingContext.Properties.Set("forced.sd.environment", "env1");
 
-            settings.TargetEnvironment.Should().Be("CustomEnvironment");
+            settings.TargetEnvironment.Should().Be("env1");
         }
 
         [Test]
-        public void TargetEnvironment_should_return_forced_sd_environment()
+        public void TargetEnvironment_should_return_forced_sd_environment_when_target_environment_was_not_set_via_constructor()
         {
             var settings = new SingularClientSettings(ServiceName);
 
