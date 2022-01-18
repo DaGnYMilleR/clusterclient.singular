@@ -1,3 +1,7 @@
+## 0.1.18 (18-01-2022):
+
+Fix bug when ForcedEnvironment was captured once instead of getting per each request.
+
 ## 0.1.17 (17-01-2022):
 
 Fix bug when in some case idempotency settings update routine stay wait indefinitely ( PR #[17](https://github.com/vostok/singular.core/pull/17).
