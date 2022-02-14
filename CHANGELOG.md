@@ -1,3 +1,7 @@
+## 0.1.19 (14-02-2022):
+
+Bump ClusterConfig dependency version
+
 ## 0.1.18 (18-01-2022):
 
 Fix bug when ForcedEnvironment was captured once instead of getting per each request.
