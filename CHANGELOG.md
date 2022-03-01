@@ -1,3 +1,8 @@
+## 0.1.20 (01-03-2022):
+
+Bump ClusterConfig dependency version
+
+
 ## 0.1.19 (14-02-2022):
 
 Bump ClusterConfig dependency version
