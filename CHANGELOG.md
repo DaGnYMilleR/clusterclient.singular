@@ -1,4 +1,4 @@
-## 0.1.20 (01-03-2022):
+## 0.1.21 (01-03-2022):
 
 Use new option from the ClusterClient.Core to decrease logs count
 
