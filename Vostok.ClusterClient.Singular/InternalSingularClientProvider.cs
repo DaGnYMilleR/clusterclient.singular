@@ -1,5 +1,6 @@
 ﻿using System;
 using Vostok.Clusterclient.Core;
+using Vostok.Clusterclient.Core.Misc;
 using Vostok.Clusterclient.Core.Ordering.Weighed;
 using Vostok.Clusterclient.Core.Ordering.Weighed.Relative;
 using Vostok.Clusterclient.Core.Strategies;
@@ -48,7 +49,7 @@ namespace Vostok.Clusterclient.Singular
                             builder.SetupAvoidInactiveDatacentersWeightModifier(datacenters);
                             builder.SetupBoostLocalDatacentersWeightModifier(datacenters);
                         });
-
+                    configuration.Logging.LoggingMode = LoggingMode.SingleShortMessage;
                     configuration.TargetEnvironment = SingularConstants.DefaultZone;
                     configuration.TargetServiceName = SingularConstants.ServiceName;
                     configuration.DefaultRequestStrategy = Strategy.Forking(SingularClientConstants.ForkingStrategyParallelismLevel);
