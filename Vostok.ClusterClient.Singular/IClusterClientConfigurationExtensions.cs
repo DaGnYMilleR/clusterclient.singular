@@ -44,6 +44,9 @@ namespace Vostok.Clusterclient.Singular
                     request => request
                         .WithHeader(SingularHeaders.Environment, settings.TargetEnvironment)
                         .WithHeader(SingularHeaders.Service, settings.TargetService)));
+            
+            if (settings.ClientIdempotencySettings != null)
+                configuration.AddRequestTransform(new NonIdempotencyHeaderRequestTransform(settings.ClientIdempotencySettings));
 
             configuration.TargetEnvironment = settings.TargetEnvironment;
             configuration.TargetServiceName = ServiceMeshEnvironmentInfo.UseLocalSingular
