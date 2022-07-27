@@ -1,0 +1,13 @@
+static Vostok.Clusterclient.Singular.Helpers.RequestParametersExtensions.SetTagsFilter(this Vostok.Clusterclient.Core.Model.RequestParameters requestParameters, string filterString) -> Vostok.Clusterclient.Core.Model.RequestParameters
+static Vostok.Clusterclient.Singular.IClusterClientConfigurationExtensions.SetupSingular(this Vostok.Clusterclient.Core.IClusterClientConfiguration configuration, Vostok.Clusterclient.Singular.SingularClientSettings settings) -> void
+Vostok.Clusterclient.Singular.Helpers.RequestParametersExtensions
+Vostok.Clusterclient.Singular.IClusterClientConfigurationExtensions
+Vostok.Clusterclient.Singular.SingularClientSettings
+Vostok.Clusterclient.Singular.SingularClientSettings.AlternativeClusterProvider.get -> Vostok.Clusterclient.Core.Topology.IClusterProvider
+Vostok.Clusterclient.Singular.SingularClientSettings.AlternativeClusterProvider.set -> void
+Vostok.Clusterclient.Singular.SingularClientSettings.MetricContext.get -> Vostok.Metrics.IMetricContext
+Vostok.Clusterclient.Singular.SingularClientSettings.MetricContext.set -> void
+Vostok.Clusterclient.Singular.SingularClientSettings.SingularClientSettings(string environmentName, string serviceName) -> void
+Vostok.Clusterclient.Singular.SingularClientSettings.SingularClientSettings(string serviceName) -> void
+Vostok.Clusterclient.Singular.SingularClientSettings.TargetEnvironment.get -> string
+Vostok.Clusterclient.Singular.SingularClientSettings.TargetService.get -> string
