@@ -1,7 +1,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 using Vostok.Clusterclient.Core.Model;
-using Vostok.Clusterclient.Singular.Idempotency;
+using Vostok.Clusterclient.Singular.Helpers;
 using Vostok.Singular.Core.PathPatterns.Extensions;
 using Vostok.Singular.Core.PathPatterns.Idempotency;
 

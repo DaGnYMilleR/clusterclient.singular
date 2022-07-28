@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 using Vostok.Clusterclient.Core.Model;
 using Vostok.Singular.Core;
 
-namespace Vostok.Clusterclient.Singular.Idempotency
+namespace Vostok.Clusterclient.Singular.Helpers
 {
     [PublicAPI]
     public static class RequestExtensions
