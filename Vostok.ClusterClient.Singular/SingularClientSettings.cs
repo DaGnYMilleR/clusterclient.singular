@@ -57,12 +57,5 @@ namespace Vostok.Clusterclient.Singular
         /// Explicitly setting a <see cref="IMetricContext"/> allows the client from writing metrics about quality.
         /// </summary>
         public IMetricContext? MetricContext { get; set; }
-        
-        /// <summary>
-        /// <para>Represents an idempotency configuration of <see cref="ClusterClient"/>.</para>
-        /// <para>Can be used instead of configuration from ClusterConfig.</para>
-        /// <para>Firstly idempotency header existence will be checked and then if not exists taken from ClusterConfig.</para>
-        /// </summary>
-        public ClientIdempotencySettings? ClientIdempotencySettings { get; set; }
     }
 }

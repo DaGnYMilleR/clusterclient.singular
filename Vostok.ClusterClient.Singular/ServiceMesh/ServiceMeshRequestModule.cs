@@ -8,6 +8,7 @@ using Vostok.Clusterclient.Core.Strategies;
 using Vostok.Clusterclient.Core.Topology;
 using Vostok.Logging.Abstractions;
 using Vostok.Singular.Core;
+using Vostok.Singular.Core.PathPatterns.Extensions;
 using Vostok.Singular.Core.PathPatterns.Idempotency;
 
 #nullable enable
