@@ -1,3 +1,7 @@
+## 0.1.22 (29-07-2022):
+
+InternalSingularClient: set minimum log-level to 'Warn'
+
 ## 0.1.21 (01-03-2022):
 
 Use new option from the ClusterClient.Core to decrease logs count
