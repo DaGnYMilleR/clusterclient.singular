@@ -35,7 +35,9 @@ namespace Vostok.Clusterclient.Singular
 
         internal static IClusterClient Create(ILog log = null, IClusterProvider alternativeCluster = null)
         {
-            return new Core.ClusterClient(log ?? LogProvider.Get(),
+            var limitedLog = (log ?? LogProvider.Get()).WithMinimumLevel(LogLevel.Warn);
+        
+            return new Core.ClusterClient(limitedLog,
                 configuration =>
                 {
                     configuration.SetupUniversalTransport();
