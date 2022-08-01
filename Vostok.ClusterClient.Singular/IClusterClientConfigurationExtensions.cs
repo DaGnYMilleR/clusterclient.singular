@@ -44,7 +44,7 @@ namespace Vostok.Clusterclient.Singular
                     request => request
                         .WithHeader(SingularHeaders.Environment, settings.TargetEnvironment)
                         .WithHeader(SingularHeaders.Service, settings.TargetService)));
-            
+
             configuration.TargetEnvironment = settings.TargetEnvironment;
             configuration.TargetServiceName = ServiceMeshEnvironmentInfo.UseLocalSingular
                 ? $"{settings.TargetService} via ServiceMesh"
@@ -78,7 +78,7 @@ namespace Vostok.Clusterclient.Singular
             }
 
             InitializeMetricsProviderIfNeeded(configuration, settings.MetricContext, clusterConfigClient);
-            
+
             configuration.AddRequestModule(new ReplicaTagsFilterFillingModule());
         }
 

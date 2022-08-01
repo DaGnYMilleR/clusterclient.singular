@@ -8,19 +8,10 @@ namespace Vostok.Clusterclient.Singular.Helpers
     public static class RequestExtensions
     {
         /// <summary>
-        /// Marks request as not idempotent.
+        /// Adds idempotency sign to the request
         /// </summary>
-        /// <param name="request"></param>
         /// <returns></returns>
-        public static Request WithNotIdempotentHeader(this Request request) =>
-            request.WithHeader(SingularHeaders.Idempotent, false);
-
-        /// <summary>
-        /// Marks request as idempotent.
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public static Request WithIdempotentHeader(this Request request) =>
-            request.WithHeader(SingularHeaders.Idempotent, true);
+        public static Request WithIdempotencyHeader(this Request request, bool isIdempotent) =>
+            request.WithHeader(SingularHeaders.Idempotent, isIdempotent);
     }
 }
